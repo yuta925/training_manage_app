@@ -1,6 +1,6 @@
 "use client";
 import { Suspense } from "react";
-import { LoginForm } from "./components/form";
+import { LoginForm } from "./components/login";
 
 export default function Home() {
   return (
