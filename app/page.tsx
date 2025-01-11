@@ -1,33 +1,33 @@
 "use client";
 import { SidebarContext } from "@/context/SidebarContext"; // SidebarContextをインポート
 import { redirect } from "next/navigation";
-import React, { useContext } from "react";
+import { useContext } from "react";
 
 const Home = () => {
   const { isOpen } = useContext(SidebarContext); // Sidebarの状態を取得
 
   return (
     <div
-      className={`flex flex-col items-center justify-center min-h-screen bg-gray-100 px-6 transition-all duration-300 ${
+      className={`flex min-h-screen flex-col items-center justify-center bg-gray-100 px-6 transition-all duration-300 ${
         isOpen ? "ml-60" : "ml-16"
       }`}
     >
       {/* ヘッダー */}
-      <header className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-800">筋トレ管理アプリ</h1>
-        <p className="text-lg text-gray-600 mt-2">
+      <header className="mb-8 text-center">
+        <h1 className="font-bold text-4xl text-gray-800">筋トレ管理アプリ</h1>
+        <p className="mt-2 text-gray-600 text-lg">
           あなたのトレーニングを効率的にサポートします
         </p>
       </header>
 
       {/* メインコンテンツ */}
-      <main className="w-full max-w-4xl bg-white shadow-md rounded-lg p-6">
+      <main className="w-full max-w-4xl rounded-lg bg-white p-6 shadow-md">
         {/* セクション1: アプリの説明 */}
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+          <h2 className="mb-4 font-semibold text-2xl text-gray-700">
             アプリの特徴
           </h2>
-          <ul className="list-disc list-inside text-gray-600 space-y-2">
+          <ul className="list-inside list-disc space-y-2 text-gray-600">
             <li>簡単にトレーニングメニューを記録可能</li>
             <li>進捗をグラフで確認できる機能</li>
             <li>トレーニング履歴をカレンダー形式で管理</li>
@@ -36,10 +36,10 @@ const Home = () => {
 
         {/* セクション2: 行動を促す */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+          <h2 className="mb-4 font-semibold text-2xl text-gray-700">
             さあ、始めましょう！
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="mb-6 text-gray-600">
             今すぐ登録して、理想の体を目指しましょう。
           </p>
           <div className="flex justify-center space-x-4">

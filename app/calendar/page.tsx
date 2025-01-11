@@ -7,85 +7,85 @@ import { SidebarContext } from "@/context/SidebarContext"; // SidebarContextを�
 
 // 型定義
 interface TrainingModalProps {
-	date: Date;
-	onClose: () => void;
+  date: Date;
+  onClose: () => void;
 }
 
 export default function CalendarPage() {
-	const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-	const [isModalOpen, setModalOpen] = useState<boolean>(false);
-	const { isOpen } = useContext(SidebarContext); // Sidebarの状態を取得
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const { isOpen } = useContext(SidebarContext); // Sidebarの状態を取得
 
-	const handleDateClick = (date: Date) => {
-		setSelectedDate(date);
-		setModalOpen(true);
-	};
+  const handleDateClick = (date: Date) => {
+    setSelectedDate(date);
+    setModalOpen(true);
+  };
 
-	return (
-		<div
-			className={`transition-all duration-300 ${
-				isOpen ? "ml-60" : "ml-16"
-			} p-4`} // Sidebarの幅に応じて調整
-		>
-			<h1 className="text-2xl font-bold mb-4">筋トレカレンダー</h1>
-			<Calendar onClickDay={handleDateClick} className="shadow-md" />
-			{isModalOpen && (
-				<TrainingModal
-					date={selectedDate}
-					onClose={() => setModalOpen(false)}
-				/>
-			)}
-		</div>
-	);
+  return (
+    <div
+      className={`transition-all duration-300 ${
+        isOpen ? "ml-60" : "ml-16"
+      } p-4`} // Sidebarの幅に応じて調整
+    >
+      <h1 className="mb-4 font-bold text-2xl">筋トレカレンダー</h1>
+      <Calendar onClickDay={handleDateClick} className="shadow-md" />
+      {isModalOpen && (
+        <TrainingModal
+          date={selectedDate}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
+    </div>
+  );
 }
 
 function TrainingModal({ date, onClose }: TrainingModalProps) {
-	return (
-		<div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-			<div className="bg-white p-6 rounded shadow-lg w-80">
-				<h2 className="text-xl font-semibold mb-4">
-					記録登録: {date.toDateString()}
-				</h2>
-				<form>
-					<label className="block mb-2">
-						器具名:
-						<select className="block w-full border p-2 rounded">
-							<option value="bench_press">ベンチプレス</option>
-							<option value="dumbbell">ダンベル</option>
-							<option value="squat_rack">スクワットラック</option>
-						</select>
-					</label>
-					<label className="block mb-2">
-						重量 (kg):
-						<input
-							type="number"
-							className="block w-full border p-2 rounded"
-							placeholder="重量を入力"
-						/>
-					</label>
-					<label className="block mb-2">
-						回数 (rep):
-						<input
-							type="number"
-							className="block w-full border p-2 rounded"
-							placeholder="回数を入力"
-						/>
-					</label>
-					<button
-						type="submit"
-						className="bg-blue-500 text-white px-4 py-2 rounded mt-2"
-					>
-						保存
-					</button>
-				</form>
-				<button
-					type="button"
-					onClick={onClose}
-					className="mt-4 text-red-500 underline block text-center"
-				>
-					キャンセル
-				</button>
-			</div>
-		</div>
-	);
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="w-80 rounded bg-white p-6 shadow-lg">
+        <h2 className="mb-4 font-semibold text-xl">
+          記録登録: {date.toDateString()}
+        </h2>
+        <form>
+          <label className="mb-2 block">
+            器具名:
+            <select className="block w-full rounded border p-2">
+              <option value="bench_press">ベンチプレス</option>
+              <option value="dumbbell">ダンベル</option>
+              <option value="squat_rack">スクワットラック</option>
+            </select>
+          </label>
+          <label className="mb-2 block">
+            重量 (kg):
+            <input
+              type="number"
+              className="block w-full rounded border p-2"
+              placeholder="重量を入力"
+            />
+          </label>
+          <label className="mb-2 block">
+            回数 (rep):
+            <input
+              type="number"
+              className="block w-full rounded border p-2"
+              placeholder="回数を入力"
+            />
+          </label>
+          <button
+            type="submit"
+            className="mt-2 rounded bg-blue-500 px-4 py-2 text-white"
+          >
+            保存
+          </button>
+        </form>
+        <button
+          type="button"
+          onClick={onClose}
+          className="mt-4 block text-center text-red-500 underline"
+        >
+          キャンセル
+        </button>
+      </div>
+    </div>
+  );
 }

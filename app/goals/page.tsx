@@ -39,33 +39,33 @@ export default function GoalSettingPage() {
       prevGoals.map((goal) =>
         goal.id === id
           ? { ...goal, progress: Math.min(newProgress, goal.target) }
-          : goal
-      )
+          : goal,
+      ),
     );
   };
 
   return (
     <div
-      className={`transition-all duration-300 p-4 ${
+      className={`p-4 transition-all duration-300 ${
         isOpen ? "ml-60" : "ml-16"
       }`}
     >
-      <h1 className="text-2xl font-bold mb-4">目標設定</h1>
+      <h1 className="mb-4 font-bold text-2xl">目標設定</h1>
 
       {/* 新しい目標を追加 */}
       <div className="mb-6">
-        <h2 className="text-xl font-semibold mb-2">新しい目標を設定</h2>
-        <div className="flex gap-2 mb-2">
+        <h2 className="mb-2 font-semibold text-xl">新しい目標を設定</h2>
+        <div className="mb-2 flex gap-2">
           <input
             type="text"
-            className="border p-2 rounded w-1/2"
+            className="w-1/2 rounded border p-2"
             placeholder="目標名 (例: ベンチプレス 100kg)"
             value={newGoalName}
             onChange={(e) => setNewGoalName(e.target.value)}
           />
           <input
             type="number"
-            className="border p-2 rounded w-1/4"
+            className="w-1/4 rounded border p-2"
             placeholder="目標値"
             value={newGoalTarget}
             onChange={(e) => setNewGoalTarget(Number(e.target.value))}
@@ -73,7 +73,7 @@ export default function GoalSettingPage() {
           <button
             type="button"
             onClick={handleAddGoal}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="rounded bg-blue-500 px-4 py-2 text-white"
           >
             追加
           </button>
@@ -82,7 +82,7 @@ export default function GoalSettingPage() {
 
       {/* 現在の目標一覧 */}
       <div>
-        <h2 className="text-xl font-semibold mb-2">目標一覧</h2>
+        <h2 className="mb-2 font-semibold text-xl">目標一覧</h2>
         {goals.length === 0 ? (
           <p className="text-gray-500">まだ目標が設定されていません。</p>
         ) : (
@@ -90,18 +90,18 @@ export default function GoalSettingPage() {
             {goals.map((goal) => (
               <li
                 key={goal.id}
-                className="border p-4 rounded shadow-sm flex justify-between items-center"
+                className="flex items-center justify-between rounded border p-4 shadow-sm"
               >
                 <div>
-                  <p className="text-lg font-bold">{goal.name}</p>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-bold text-lg">{goal.name}</p>
+                  <p className="text-gray-600 text-sm">
                     進捗: {goal.progress} / {goal.target}
                   </p>
                 </div>
-                <div className="flex gap-2 items-center">
+                <div className="flex items-center gap-2">
                   <input
                     type="number"
-                    className="border p-2 rounded w-24"
+                    className="w-24 rounded border p-2"
                     value={goal.progress}
                     onChange={(e) =>
                       handleUpdateProgress(goal.id, Number(e.target.value))
