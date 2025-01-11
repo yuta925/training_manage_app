@@ -1,3 +1,3 @@
 export type CsrfToken = {
-  csrf_token: string;
+	csrf_token: string;
 };
