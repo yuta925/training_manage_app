@@ -1,9 +1,10 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { sideBarAtom } from "@/jotai/atom";
+import { useAtom } from "jotai";
+import { useState } from "react";
 import Calendar from "react-calendar"; // npm install react-calendar
 import "react-calendar/dist/Calendar.css";
-import { SidebarContext } from "@/context/SidebarContext"; // SidebarContextをインポート
 
 // 型定義
 interface TrainingModalProps {
@@ -14,8 +15,7 @@ interface TrainingModalProps {
 export default function CalendarPage() {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
-  const { isOpen } = useContext(SidebarContext); // Sidebarの状態を取得
-
+  const [isOpen] = useAtom(sideBarAtom);
   const handleDateClick = (date: Date) => {
     setSelectedDate(date);
     setModalOpen(true);

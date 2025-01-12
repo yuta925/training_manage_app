@@ -33,7 +33,7 @@ const Sidebar = () => {
           isOpen ? "block" : "hidden"
         }`}
       >
-        筋トレ管理アプリ
+        Icon
       </div>
 
       {/* ナビゲーション */}
@@ -45,7 +45,7 @@ const Sidebar = () => {
               className={`flex w-full items-center rounded-3xl px-4 py-2 ${
                 isOpen ? "bg-gray-500" : "bg-white"
               } roundedA hover:bg-gray-700`}
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/dashboard")}
             >
               {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
               <svg
@@ -71,7 +71,7 @@ const Sidebar = () => {
               className={`flex w-full items-center rounded-3xl px-4 py-2 ${
                 isOpen ? "bg-gray-500" : "bg-white"
               } roundedA hover:bg-gray-700`}
-              onClick={() => router.push("/calendar")}
+              onClick={() => router.push("/dashboard/calendar")}
             >
               {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
               <svg
@@ -97,7 +97,7 @@ const Sidebar = () => {
               className={`flex w-full items-center rounded-3xl px-4 py-2 ${
                 isOpen ? "bg-gray-500" : "bg-white"
               } roundedA hover:bg-gray-700`}
-              onClick={() => router.push("/goals")}
+              onClick={() => router.push("/dashboard/goals")}
             >
               {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
               <svg
