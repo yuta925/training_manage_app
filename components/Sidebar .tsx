@@ -1,10 +1,11 @@
 "use client";
 
-import { SidebarContext } from "@/context/SidebarContext";
+import { sideBarAtom } from "@/jotai/atom";
+import { useAtom } from "jotai";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
+
 const Sidebar = () => {
-  const { isOpen, setIsOpen } = useContext(SidebarContext);
+  const [isOpen, setIsOpen] = useAtom(sideBarAtom);
   const router = useRouter();
 
   return (

@@ -1,17 +1,9 @@
 "use client";
-import { SidebarContext } from "@/context/SidebarContext"; // SidebarContextをインポート
 import { redirect } from "next/navigation";
-import { useContext } from "react";
 
 const Home = () => {
-  const { isOpen } = useContext(SidebarContext); // Sidebarの状態を取得
-
   return (
-    <div
-      className={`flex min-h-screen flex-col items-center justify-center bg-gray-100 px-6 transition-all duration-300 ${
-        isOpen ? "ml-60" : "ml-16"
-      }`}
-    >
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 px-6 transition-all duration-300 ">
       {/* ヘッダー */}
       <header className="mb-8 text-center">
         <h1 className="font-bold text-4xl text-gray-800">筋トレ管理アプリ</h1>

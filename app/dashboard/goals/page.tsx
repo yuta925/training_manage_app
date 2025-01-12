@@ -1,6 +1,7 @@
 "use client";
-import { SidebarContext } from "@/context/SidebarContext"; // SidebarContextをインポート
-import { useContext, useState } from "react";
+import { sideBarAtom } from "@/jotai/atom";
+import { useAtom } from "jotai";
+import { useState } from "react";
 
 // 型定義
 interface Goal {
@@ -11,7 +12,7 @@ interface Goal {
 }
 
 export default function GoalSettingPage() {
-  const { isOpen } = useContext(SidebarContext); // Sidebarの状態を取得
+  const [isOpen] = useAtom(sideBarAtom);
   const [goals, setGoals] = useState<Goal[]>([]);
   const [newGoalName, setNewGoalName] = useState<string>("");
   const [newGoalTarget, setNewGoalTarget] = useState<number>(0);
